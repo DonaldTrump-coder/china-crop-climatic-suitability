@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="GPU-Accelerated Least-Square Matching Refiner for Epipolar Image Pairs.">
+  <meta name="keywords" content="Least-Squares Matching, GPU, CUDA, Photogrammetry, Epipolar">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>G-LSMEI</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/project.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://donaldtrump-coder.github.io/" target="_blank">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Work
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://donaldtrump-coder.github.io/Informative-Scene-Reconstruction-App/" target="_blank" style="font-size: 0.775rem;">
+            Scene Reconstructor with Guidance Agent
+          </a>
+            <a class="navbar-item" href="https://donaldtrump-coder.github.io/FastViewGen/" target="_blank">
+            FastViewGener
+          </a>
+          <a class="navbar-item" href="https://donaldtrump-coder.github.io/mapswithdrone" target="_blank">
+            Atlas of LEI
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title"><img src="static/images/project.png" style="height: 0.7em; vertical-align: middle;"/> G-LSMEI: GPU-Accelerated Least-Square Matching Refiner for Epipolar Image Pairs</h1>
+
+          <div style="margin-bottom: 0.5em;">
+            <a href="https://github.com/DonaldTrump-coder/G-LSMEI/" target="_blank">
+                <img src="https://img.shields.io/github/stars/DonaldTrump-coder/G-LSMEI?style=social" alt="Stars">
+            </a>
+            <a href="https://github.com/DonaldTrump-coder/G-LSMEI/" target="_blank">
+                <img src="https://img.shields.io/github/forks/DonaldTrump-coder/G-LSMEI?style=social" alt="Forks">
+            </a>
+            <a href="https://pypi.org/project/glsmei/" target="_blank">
+                <img src="https://img.shields.io/pypi/v/glsmei?color=blue" alt="PyPI">
+            </a>
+            <a href="https://donaldtrump-coder.github.io/G-LSMEI/" target="_blank">
+                <img src="https://img.shields.io/badge/Project_Page-G--LSMEI-brightgreen" alt="Page">
+            </a>
+            <a href="http://www.apache.org/licenses/" target="_blank">
+                <img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=flat" alt="License">
+            </a>
+            <img src="https://img.shields.io/github/last-commit/DonaldTrump-coder/G-LSMEI?color=green" alt="Last Commit">
+            <img src="https://img.shields.io/badge/platform-Windows%2010%20%7C%20Windows%2011-lightgrey" alt="Platform">
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://donaldtrump-coder.github.io/" target="_blank">
+                Haojun Tang
+            </a>,
+            </span>
+            <span class="author-block">
+              <a href="https://github.com/Jeiluo" target="_blank">
+                Jiahao Zhou
+            </a>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+                <span><strong>Acknowledgements:</strong></span>
+                Thanks to the guidance of <a href="https://faculty.csu.edu.cn/zhangyunsheng1/zh_CN/index.htm" target="_blank">Yunsheng Zhang</a> from
+                <a href="https://www.csu.edu.cn/" target="_blank">
+                    Central South University
+                </a>
+            </span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+
+              <span class="link-block">
+                <a href="https://github.com/DonaldTrump-coder/G-LSMEI"
+                   class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://pypi.org/project/glsmei/"
+                   class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon">
+                      <i class="fab fa-python"></i>
+                  </span>
+                  <span>Package</span>
+                  </a>
+                </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <figure>
+            <table style="margin: 0 auto; border-collapse: collapse; border: 2px solid #ccc; width: 70%;">
+            <tr>
+                <th style="text-align: center; border: 1px solid #ccc; padding: 0.1em;">Left Image</th>
+                <th style="text-align: center; border: 1px solid #ccc; padding: 0.1em;">Right Image</th>
+            </tr>
+            <tr>
+                <td style="text-align: center; border: 1px solid #ccc; padding: 0.3em;">
+                <img src="./images/left_marked.jpg" style="width: 90%;">
+                </td>
+                <td style="text-align: center; border: 1px solid #ccc; padding: 0.3em;">
+                <img src="./images/right_marked.jpg" style="width: 90%;">
+                </td>
+            </tr>
+            </table>
+            <figcaption style="text-align: center;">
+            Sub-pixel Matching Results of an Epipolar Image Pair.
+            </figcaption>
+            </figure>
+        </div>
+        <div class="columns is-centered has-text-centered" style="padding-top: 1.5em;">
+            <figure>
+                <table style="margin: 0 auto; border-collapse: collapse; border: 2px solid #ccc; width: 50%;">
+                <tr>
+                <th style="text-align: center; border: 1px solid #ccc; padding: 0.6em;">CPU</th>
+                <th style="text-align: center; border: 1px solid #ccc; padding: 0.6em;">GPU</th>
+                </tr>
+                <tr>
+                <td style="text-align: center; border: 1px solid #ccc; padding: 0.6em;">332.27 sec</td>
+                <td style="text-align: center; border: 1px solid #ccc; padding: 0.6em;">0.621 sec</td>
+                </tr>
+            </table>
+            <figcaption style="text-align: center;">
+            Batch computation time comparison between CPU and GPU implementations.
+            </figcaption>
+            </figure>
+        </div>
+        <div>
+            <p style="text-align: center;">
+                <strong>Efficiency improved by 500+ times in our GPU implementation!</strong>
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="section" style="padding: 2.2em 0;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+        <h2 class="title is-3">About</h2>
+    <p>
+        A project of the sub-pixel <strong>Least-Square Matching Refining Algorithm</strong> for <strong>Epipolar-Rectified Stereo Image Pairs</strong> in window-size areas. The classic algorithm is proposed by Ackermann in
+        <a href="https://doi.org/10.1111/j.1477-9730.1984.tb00505.x" target="_blank">
+            <em>
+                Digital Image Correlation: Performance and Potential Application in Photogrammetry
+            </em>
+        </a>
+        (1984), where the correspondence search reduces to a one-dimensional problem along epipolar lines, enabling both fast convergence and high accuracy.
+    </p><br>
+    <p>
+    We provide the source code in <strong>C++</strong> and a <strong>Python API</strong> library built upon it.
+    A PyQt Demo Application and the CUDA-based GPU-accelerated version are also provided.
+    </p>
+    <p>
+    Up to now we have successfully tested the C++ and Python built from source code on <em>Windows 10</em> and <em>Windows 11</em>.
+    </p>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section class="section" style="padding:0.5em 0;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Structures</h2>
+          <p>
+            <figure>
+            <img src="./images/Environments.png" style="width: 45%;">
+            <figcaption>Environments of our source code.</figcaption>
+            </figure>
+          </p>
+          <p style="padding:1.2em 0;">
+            <figure>
+            <img src="./images/Structures.png" style="width: 65%;">
+            <figcaption>Structure of our Demo Application.</figcaption>
+            </figure>
+          </p>
+          <p style="padding:1.2em 0;">
+            <figure>
+            <img src="./images/cudastream.png" style="width: 95%;">
+            <figcaption>Stream of the CUDA Executions.</figcaption>
+            </figure>
+          </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding:2.2em 0;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+        <h2 class="title is-3">License</h2>
+        <div class="content has-text-justified">
+          <p style="text-align: center;">
+           This project is licensed under the <strong>Apache License 2.0</strong>.
+           See the <a href="https://github.com/DonaldTrump-coder/G-LSMEI/blob/main/LICENSE" target="_blank">LICENSE</a> file for details.
+           </p>
+        </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Citation</h2>
+    <p>
+        If you use our work or our data in your research, please cite:
+    </p>
+    <pre><code>@misc{Tang2026GLSMEI,
+  title        = {G-LSMEI: GPU-Accelerated Least-Square Matching Refiner for Epipolar Image Pairs},
+  author       = {Haojun Tang and Jiahao Zhou},
+  year         = {2026},
+  howpublished = {\url{https://github.com/DonaldTrump-coder/G-LSMEI}},
+  note         = {Version 1.0.2. Apache License 2.0}
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://github.com/DonaldTrump-coder" class="external-link" disabled target="_blank">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            The template is borrowed from <a href="https://github.com/nerfies/nerfies.github.io" target="_blank">Nerfies</a> under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Please contact <a href="https://donaldtrump-coder.github.io/" target="_blank">Haojun Tang</a> for feedback or questions.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
