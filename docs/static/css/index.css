@@ -2,6 +2,13 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
+/* Auto hyphenation for justified text to reduce gaps */
+.content.has-text-justified {
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+}
+
 
 .footer .icon-link {
     font-size: 25px;
