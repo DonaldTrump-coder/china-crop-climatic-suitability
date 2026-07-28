@@ -53,7 +53,7 @@ analysis:
 data:
 ```bibtex
 @misc{tang2026cropsuit,
-  author    = {Haojun Tang},
+  author    = {Tang, Haojun},
   title     = {Climate Suitability of Major Crop Distribution and Agricultural-Pastoral Zoning in China},
   year      = {2026},
   publisher = {GitHub},
