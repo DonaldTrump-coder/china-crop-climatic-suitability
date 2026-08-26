@@ -39,7 +39,7 @@ Run `python *.py` in the environment to process or analyze for the data.
 
 ## Citations
 If you find our work helpful, please cite:<br>
-analysis:
+data:
 ```bibtex
 @misc{tang2026chinaagroeco,
   author    = {Haojun Tang},
@@ -50,7 +50,7 @@ analysis:
 }
 ```
 
-data:
+analysis:
 ```bibtex
 @misc{tang2026cropsuit,
   author    = {Tang, Haojun},
