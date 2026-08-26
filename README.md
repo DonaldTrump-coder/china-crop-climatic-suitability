@@ -42,7 +42,7 @@ If you find our work helpful, please cite:<br>
 data:
 ```bibtex
 @misc{tang2026chinaagroeco,
-  author    = {Haojun Tang},
+  author    = {Tang, Haojun},
   title     = {{ChinaAgroEco}: A Multi-Source Agro-Ecological Dataset for China},
   year      = {2026},
   publisher = {ModelScope},
